@@ -6,7 +6,6 @@ public class Calendario {
 
         System.out.println("Calendario 2018");
 
-        
         String[] mes = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
         };
@@ -19,9 +18,7 @@ public class Calendario {
             System.out.println("L\tM\tX\tJ\tV\tS\tD");
             int g = 1;
             for (int x = 0; x < 6; x++) {
-
                 for (int y = 0; y < 7; y++) {
-
                     if (g <= lim[m]) {
                         System.out.print(dias[x][y] + g + "\t");
                         g++;
