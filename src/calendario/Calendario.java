@@ -4,29 +4,61 @@ public class Calendario {
 
     public static void main(String[] args) {
 
-        System.out.println("Calendario 2018");
-
-        String[] mes = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-        };
+        String meses[] = {
+            "\t\t      Enero", "\t\t     Febrero",
+            "\t\t      Marzo", "\t\t      Abril", "\t\t      Mayo",
+            "\t\t      Junio", "\t\t      Julio", "\t\t      Agosto",
+            "\t\t    Septiembre", "\t\t     Octubre", "\t\t    Noviembre",
+            "\t\t    Diciembre"};
+        char dSemanas[] = {'L', 'M', 'X', 'J', 'V', 'S', 'D'};
         int dias[][] = new int[6][7];
-        int lim[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        int m = 0;
-        for (int c = 0; c < 12; c++) {
+        int limite[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int dia = 1;
+        int contDia = 0;
+        int ultimoDia = 0;
+        int lim = 0;
+
+        for (int m = 0; m < meses.length; m++) {
             System.out.println();
-            System.out.println(mes[c]);
-            System.out.println("L\tM\tX\tJ\tV\tS\tD");
-            int g = 1;
-            for (int x = 0; x < 6; x++) {
-                for (int y = 0; y < 7; y++) {
-                    if (g <= lim[m]) {
-                        System.out.print(dias[x][y] + g + "\t");
-                        g++;
+            System.out.print(meses[m]);
+            System.out.println();
+            for (int s = 0; s < dSemanas.length; s++) {
+                System.out.print(dSemanas[s] + "\t");
+            }
+            System.out.println();
+            for (int r = 0; r < dias.length - 1 || dia <= limite[lim]; r++) {
+                int c;
+                for (c = 0; c < dias[0].length && dia <= limite[lim]; c++) {
+                    if (ultimoDia != 0 && dia == 1) {
+                        ultimoDia = contDia - 1;
+                        for (int j = 0; j <= ultimoDia; j++) {
+                            System.out.print("\t");
+                        }
+                        c = ultimoDia + 1;
+                        ultimoDia = 0;
                     }
+                    dias[r][c] = dia;
+                    if (dias[r][c] <= limite[lim]) {
+                        System.out.print(dias[r][c] + "\t");
+                    }
+                    dia++;
                 }
                 System.out.println();
+                if (c < 7) {
+                    ultimoDia = c;
+                    contDia = c;
+                }
             }
-            m++;
+            dia = 1;
+            lim++;
         }
     }
 }
+/*private static void llenar(int dia, int dias[][]) {
+        for (int r = 0; r < dias.length; r++) {
+            for (int c = 0; c < dias[0].length; c++) {
+                dias[r][c] = dia;
+                dia++;
+            }
+        }
+    }*/
