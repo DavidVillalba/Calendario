@@ -3,8 +3,7 @@ package calendario;
 public class Calendario {
 
     public static void main(String[] args) {
-        int año = 2019;
-        System.out.println(firstDayOfYear(año-1));
+        int año = 2018;
         System.out.println("\t\t Calendario " + año);
         int dias[][] = new int[6][7];
         int limite[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -18,9 +17,6 @@ public class Calendario {
             for (int rows = 0; rows < dias.length - 1 || dia <= limite[posLimite]; rows++) {
                 int cols;
                 for (cols = 0; cols < dias[0].length && dia <= limite[posLimite]; cols++) {
-                    /*if (firstDayOfYear(año-1)!=0 && dia==1){
-                        System.out.print("\t");
-                    }*/
                     cols = fPrimerDia(primerDia, dia, tabDia, cols);
                     primerDia = 0;
                     dia = fDias(dias, rows, cols, dia);
@@ -71,14 +67,5 @@ public class Calendario {
         System.out.print(dias[rows][cols] + "\t");
         dia++;
         return dia;
-    }
-
-    /* private boolean bisiesto(int año) {
-    return año % 4 == 0 && año % 100 != 0 || año % 400 == 0;
-    }*/
-    
-    private static int firstDayOfYear(int año) {
-    return (2 * (13) + (3 * (13 + 1) / 5) + (año - 1) + ((año - 1) / 4)
-    - ((año - 1) / 100) + ((año - 1) / 400) + 2) % 7;
     }
 }
